@@ -34,50 +34,39 @@ function getProducts($conn) {
 }
 
 ?>
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>New York Apartments</title>-->
-<!--    <link rel="stylesheet" type="text/css" href="styleSheet.css">-->
-<!--</head>-->
-<!--<body id="products">-->
-<!--<div class="aboutUl">-->
-<!--    <ul>-->
-<!--        <li><a href="home.php">Home</a></li>-->
-<!--        <li><a href="About.php">About</a></li>-->
-<!--        <li><a href="Contact.php">Contact</a></li>-->
-<!--        <li><a href="Products.php">Products</a></li>-->
-<!--        <li><a href="shoppingCart.php">Shopping Cart</a></li>-->
-<!--        <li><a href="F.A.Q..php">F.A.Q.</a></li>-->
-<!--        <li><a href="login.php">Login</a></li>-->
-<!--        <li class="copyright"> © New York Apartments</li>-->
-<!--    </ul>-->
-<!--</div>-->
-<!---->
-<!--<h1>Products</h1>-->
-<!--<div class="content">-->
-<!--    <div class="productContent">-->
-<!--        <div class="productTable">-->
-<!--            <table border="1px">-->
-<!--                --><?php
-//                getProducts($dbh);
-//                ?>
-<!--            </table>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
-<!--?>-->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Morality.gg</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
+<body id="products">
+<div id="aboutUl">
+    <ul>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="About.php">About</a></li>
+        <li><a href="Contact.php">Contact</a></li>
+        <li><a href="Products.php">Products</a></li>
+        <li><a href="shoppingCart.php">Shopping Cart</a></li>
+        <li><a href="F.A.Q..php">F.A.Q.</a></li>
+        <li><a href="login.php">Login</a></li>
+        <li class="copyright"> © New York Apartments</li>
+    </ul>
+</div>
 
-<body id="merch">
-<h1>Merchandise</h1>
-
+<h1 id="merchh1">Products</h1>
+<div class="content">
+    <div class="productContent">
+        <div class="productTable">
+            <table border="1px">
+                <?php
+                getProducts($dbh);
+                ?>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+?>
