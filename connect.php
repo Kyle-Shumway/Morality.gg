@@ -8,7 +8,7 @@
 
 $user = 'root';
 $pass = 'root';
-$name = 'mydb';
+$name = 'moraldb';
 $dbh = null;
 try {
     $dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);

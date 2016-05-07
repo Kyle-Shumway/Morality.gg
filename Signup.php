@@ -11,8 +11,7 @@ $passdb = 'root';
 $userdb = 'root';
 
 //connection
-$dbh = new PDO('mysql:host=localhost;dbname=moraldb', 'root', 'root');
-
+require_once ('connect.php');
 
 //insert if submit
 if (isset($_POST['submit'])) {
@@ -39,7 +38,7 @@ if (isset($_POST['submit'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">                                                                                                                                                                                   <style>body{display: none;}</style>
 <head>
     <div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
     <div id="topbanner">
@@ -49,8 +48,8 @@ if (isset($_POST['submit'])) {
 <body>
 <div id="menubar">
     <a href="index.php"><p>home</p></a>
-    <a href="store.php"><p>store</p></a>
-    <a href="aboutus.php"><p>about us</p></a>
+    <a href="Merchandise.php"><p>store</p></a>
+    <a href="about.php"><p>about us</p></a>
 </div>
 <div id="signup">
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
