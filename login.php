@@ -53,11 +53,13 @@ if (isset($_POST['submit'])) {
 <div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
 <div id="topbanner">
 </div>
-<div id="menubar">
-    <a href="index.php"><p>home</p></a>
-    <a href="Merchandise.php"><p>store</p></a>
-    <a href="about.php"><p>about us</p></a>
-</div>
+<div id="aboutUl">
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="Merchandise.php">Merchandise</a></li>
+        <li><a href="ShoppingCart.php">Shopping Cart</a></li>
+        <li><a href="login.php">Login</a></li>
+    </ul>
 <div id="Login">
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label>Username</label>

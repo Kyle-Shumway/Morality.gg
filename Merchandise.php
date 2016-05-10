@@ -14,13 +14,12 @@ function getProducts($conn) {
                 $products .= '<tr>';
             }
             $products .= '
-            <td><img src="'.$row['image'].'" height="300px" width="300px">
-                <p>'.$row['name'].'</p>
-                <p>'.$row['description'].'</p>
-                <p>'.$row['address'].'</p>
-                <p>$'.$row['price'].'</p>
-                <form method="post" action="shoppingCart.php">
-                <input type="hidden" name="id" value="'.$row['id'].'"/>
+           <td><img src="'.$row['Image'].'" height="300px" width="300px">
+                <p>'.$row['Name'].'</p>
+                <p>$'.$row['Price'].'</p>
+                <p>'.$row['Description'].'</p>
+                <form method="post" action="ShoppingCart.php">
+                <input type="hidden" name="id" value="'.$row['PrimaryKey'].'"/>
                 <input type="submit" name="add" value="ADD"/>
                 </form></td>
         ';
@@ -44,14 +43,10 @@ function getProducts($conn) {
 <body id="products">
 <div id="aboutUl">
     <ul>
-        <li><a href="home.php">Home</a></li>
-        <li><a href="About.php">About</a></li>
-        <li><a href="Contact.php">Contact</a></li>
-        <li><a href="Products.php">Products</a></li>
-        <li><a href="shoppingCart.php">Shopping Cart</a></li>
-        <li><a href="F.A.Q..php">F.A.Q.</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="Merchandise.php">Merchandise</a></li>
+        <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
-        <li class="copyright"> © New York Apartments</li>
     </ul>
 </div>
 
