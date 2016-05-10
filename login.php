@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
     if (!empty($user_username) && !empty($user_password)) {
         // Look up the username and password in the database
-        $query = "SELECT user_id, username FROM mismatch_user WHERE username = '$user_username' AND password = SHA('$user_password')";
+        $query = "SELECT primarykey, username FROM users WHERE username = '$user_username' AND password = SHA('$user_password')";
         $data = $dbh->prepare($query);
         $results = $stmt->execute(array(
             $user_username => $user_username,
