@@ -12,6 +12,8 @@ $userdb = 'root';
 
 //connection
 require_once ('connect.php');
+$dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
+
 
 //insert if submit
 if (isset($_POST['submit'])) {
@@ -38,7 +40,7 @@ if (isset($_POST['submit'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">                                                                                                                                                                                   <style>body{display: none;}</style>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 <head>
     <div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
     <div id="topbanner">
@@ -57,10 +59,10 @@ if (isset($_POST['submit'])) {
 <div id="signup">
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>First Name</label>
-    <input type="text" id="First Name" name="fName" value="<?php if (!empty($firstName)) echo ''; ?>">
+    <input type="text" id="First Name" name="fname" value="<?php if (!empty($firstName)) echo ''; ?>">
     <br>
     <label>Last Name</label>
-    <input type="text" id="Last Name" name="lName" value="<?php if (!empty($lastName)) echo ''; ?>">
+    <input type="text" id="Last Name" name="lname" value="<?php if (!empty($lastName)) echo ''; ?>">
     <br>
     <label>Email</label>
     <input type="text" id="Email" name="email" value="<?php if (!empty($email)) echo ''; ?>">

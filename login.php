@@ -47,7 +47,27 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style>
+        
+        body{
+            text-decoration: none;
+        }
+            #Login{
+                background-color: lightgrey;
+                width: 100%;
+                position: relative;
+                right:0%;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+
+
+    </style>
 </head>
 <body>
 <div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
@@ -68,7 +88,7 @@ if (isset($_POST['submit'])) {
         <label>Password</label>
         <input type="password" id="Password" name="password" value="<?php if (!empty($password1)) echo ''; ?>">
         <br>
-        <input type="submit" name="submit" value="submit">
+        <input style="background-color: darkblue;" class="btn btn-info" type="submit" name="submit" value="submit">
     </form>
 </div>
 </body>
