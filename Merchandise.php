@@ -14,13 +14,12 @@ function getProducts($conn) {
                 $products .= '<tr>';
             }
             $products .= '
-            <td><img src="'.$row['image'].'" height="300px" width="300px">
-                <p>'.$row['name'].'</p>
-                <p>'.$row['description'].'</p>
-                <p>'.$row['address'].'</p>
-                <p>$'.$row['price'].'</p>
-                <form method="post" action="shoppingCart.php">
-                <input type="hidden" name="id" value="'.$row['id'].'"/>
+           <td><img src="'.$row['Image'].'" height="300px" width="300px">
+                <p>'.$row['Name'].'</p>
+                <p>$'.$row['Price'].'</p>
+                <p>'.$row['Description'].'</p>
+                <form method="post" action="ShoppingCart.php">
+                <input type="hidden" name="id" value="'.$row['PrimaryKey'].'"/>
                 <input type="submit" name="add" value="ADD"/>
                 </form></td>
         ';
