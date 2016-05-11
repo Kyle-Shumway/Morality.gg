@@ -11,7 +11,8 @@ $passdb = 'root';
 $userdb = 'root';
 
 //connection
-$dbh = new PDO('mysql:host=localhost;dbname=moraldb', 'root', 'root');
+require_once ('connect.php');
+$dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
 
 
 //insert if submit
@@ -21,8 +22,8 @@ if (isset($_POST['submit'])) {
     $password1 = $_POST[('password1')];
     $password2 = $_POST[('password2')];
     $email = $_POST['email'];
-    $firstName = $_POST['fName'];
-    $lastName = $_POST['lName'];
+    $firstName = $_POST['fname'];
+    $lastName = $_POST['lname'];
 
 
     //Insert into db
@@ -47,18 +48,21 @@ if (isset($_POST['submit'])) {
     </div>
 </head>
 <body>
-<div id="menubar">
-    <a href="index.php"><p>home</p></a>
-    <a href="store.php"><p>store</p></a>
-    <a href="aboutus.php"><p>about us</p></a>
+<div id="aboutUl">
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="Merchandise.php">Merchandise</a></li>
+        <li><a href="ShoppingCart.php">Shopping Cart</a></li>
+        <li><a href="login.php">Login</a></li>
+    </ul>
 </div>
 <div id="signup">
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>First Name</label>
-    <input type="text" id="First Name" name="fName" value="<?php if (!empty($firstName)) echo ''; ?>">
+    <input type="text" id="First Name" name="fname" value="<?php if (!empty($firstName)) echo ''; ?>">
     <br>
     <label>Last Name</label>
-    <input type="text" id="Last Name" name="lName" value="<?php if (!empty($lastName)) echo ''; ?>">
+    <input type="text" id="Last Name" name="lname" value="<?php if (!empty($lastName)) echo ''; ?>">
     <br>
     <label>Email</label>
     <input type="text" id="Email" name="email" value="<?php if (!empty($email)) echo ''; ?>">
