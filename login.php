@@ -5,7 +5,7 @@
  * Date: 5/5/16
  * Time: 4:37 PM
  */
-
+require_once ('connect.php');
 if (isset($_POST['submit'])) {
     // Connect to the database
 
@@ -16,13 +16,13 @@ if (isset($_POST['submit'])) {
     if (!empty($user_username) && !empty($user_password)) {
         // Look up the username and password in the database
         $query = "SELECT primarykey, username FROM users WHERE username = '$user_username' AND password = SHA('$user_password')";
-        $data = $dbh->prepare($query);
+        $stmt = $dbh->prepare($query);
         $results = $stmt->execute(array(
             $user_username => $user_username,
             $user_password => $user_password
-        ))->fetchall();
-
-        if ($data == 1) {
+        ));
+        $data = $stmt->fetchAll();
+        if (count($data) == 1) {
             // The log-in is OK so set the user ID and username session vars (and cookies), and redirect to the home page
             $row = $data[0];
             $_SESSION['user_id'] = $row['user_id'];
@@ -79,7 +79,9 @@ if (isset($_POST['submit'])) {
         <li><a href="Merchandise.php">Merchandise</a></li>
         <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
+        <li><a href="Signup.php">Signup</a></li>
     </ul>
+</div>
 <div id="Login">
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label>Username</label>

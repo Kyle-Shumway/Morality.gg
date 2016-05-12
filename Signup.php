@@ -12,53 +12,27 @@ $userdb = 'root';
 
 //connection
 require_once ('connect.php');
-$dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
-
-//make a token
-function generateToken()
-{
-    $date = date(DATE_RFC2822);
-    $rand = rand();
-    return sha1($date . $rand);
-}
 
 //insert if submit
 if (isset($_POST['submit'])) {
-    //post vars for the form to signup
+    //post vars for the form to sign up
     $username = $_POST['username'];
     $password1 = $_POST[('password1')];
     $password2 = $_POST[('password2')];
     $email = $_POST['email'];
-    $firstName = $_POST['fname'];
-    $lastName = $_POST['lname'];
-    $token = generateToken();
+    $firstname = $_POST['fname'];
+    $lastname = $_POST['lname'];
 
     //Insert into db
-    $query = "INSERT INTO users (email,fname,lname,username,password1,token)VALUES (?,?,?,?,SHA(?),?)";
+    $query = "INSERT INTO users (email,fname,lname,username,password)VALUES (?,?,?,?,SHA(?))";
     $stmt = $dbh->prepare($query);
-    try {
-        if ($results = $stmt->execute(array(
-            $email,
-            $firstName,
-            $lastName,
-            $username,
-            $password1,
-            $token,
-        ))
-        ) {
-
-            setcookie('token', $token, 0, "/");
-            $sql = 'INSERT INTO orders (users_id, status) (SELECT u.id, "new" FROM users u WHERE u.token = ?)';
-            $stmt1 = $conn->prepare($sql);
-            if ($stmt1->execute(array($token))) {
-                echo 'Account Registered';
-            }
-        }
-    } catch (PDOException $e) {
-        echo 'Username or Email Already Registered';
-    }
-
-
+    $results = $stmt->execute(array(
+        $email,
+        $firstname,
+        $lastname,
+        $username,
+        $password1,
+    ));
 }
 ?>
 <!DOCTYPE html>
@@ -77,15 +51,16 @@ if (isset($_POST['submit'])) {
         <li><a href="Merchandise.php">Merchandise</a></li>
         <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
+        <li><a href="Signup.php">Signup</a></li>
     </ul>
 </div>
 <div id="signup">
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>First Name</label>
-    <input type="text" id="First Name" name="fname" value="<?php if (!empty($firstName)) echo ''; ?>">
+    <input type="text" id="First Name" name="fname" value="<?php if (!empty($firstname)) echo ''; ?>">
     <br>
     <label>Last Name</label>
-    <input type="text" id="Last Name" name="lname" value="<?php if (!empty($lastName)) echo ''; ?>">
+    <input type="text" id="Last Name" name="lname" value="<?php if (!empty($lastname)) echo ''; ?>">
     <br>
     <label>Email</label>
     <input type="text" id="Email" name="email" value="<?php if (!empty($email)) echo ''; ?>">
