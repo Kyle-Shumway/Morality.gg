@@ -14,6 +14,13 @@ $userdb = 'root';
 require_once ('connect.php');
 $dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
 
+//make a token
+function generateToken()
+{
+    $date = date(DATE_RFC2822);
+    $rand = rand();
+    return sha1($date . $rand);
+}
 
 //insert if submit
 if (isset($_POST['submit'])) {
@@ -24,18 +31,34 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $firstName = $_POST['fname'];
     $lastName = $_POST['lname'];
-
+    $token = generateToken();
 
     //Insert into db
-    $query = "INSERT INTO users (email,fname,lname,username,password1)VALUES (?,?,?,?,SHA(?))";
+    $query = "INSERT INTO users (email,fname,lname,username,password1,token)VALUES (?,?,?,?,SHA(?),?)";
     $stmt = $dbh->prepare($query);
-    $results = $stmt->execute(array(
-        $email,
-        $firstName,
-        $lastName,
-        $username,
-        $password1,
-    ));
+    try {
+        if ($results = $stmt->execute(array(
+            $email,
+            $firstName,
+            $lastName,
+            $username,
+            $password1,
+            $token,
+        ))
+        ) {
+
+            setcookie('token', $token, 0, "/");
+            $sql = 'INSERT INTO orders (users_id, status) (SELECT u.id, "new" FROM users u WHERE u.token = ?)';
+            $stmt1 = $conn->prepare($sql);
+            if ($stmt1->execute(array($token))) {
+                echo 'Account Registered';
+            }
+        }
+    } catch (PDOException $e) {
+        echo 'Username or Email Already Registered';
+    }
+
+
 }
 ?>
 <!DOCTYPE html>
