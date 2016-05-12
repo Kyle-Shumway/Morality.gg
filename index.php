@@ -1,4 +1,31 @@
+<?php
 
+$user = 'root';
+$pass = 'root';
+$name = 'moraldb';
+$conn = $dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
+// code
+$query = "SELECT username , s.team_name FROM users u LEFT JOIN subscriptions s ON s.users_id = u.primarykey";
+$stmt = $conn->prepare($query);
+if ($stmt->execute()) {
+    $products = '<tr>';
+
+    while ($row = $stmt->fetch()) {
+        $output .= '<tr><td>
+                <p>' . $row['username'] . '</p>
+                </td>
+                <td>
+                <p>' . $row['team_name'] . '</p>
+                </td>
+                </tr>
+                ';
+    }
+    echo $output;
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -26,6 +53,9 @@
         </ul>
     </div>
 </div>
+<?php
+getProducts($dbh);
+?>
 </body>
 </html>
 
