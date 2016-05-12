@@ -15,22 +15,21 @@ require_once ('connect.php');
 
 //insert if submit
 if (isset($_POST['submit'])) {
-    //post vars for the form to signup
+    //post vars for the form to sign up
     $username = $_POST['username'];
     $password1 = $_POST[('password1')];
     $password2 = $_POST[('password2')];
     $email = $_POST['email'];
-    $firstName = $_POST['fname'];
-    $lastName = $_POST['lname'];
-
+    $firstname = $_POST['fname'];
+    $lastname = $_POST['lname'];
 
     //Insert into db
-    $query = "INSERT INTO users (email,fname,lname,username,password1)VALUES (?,?,?,?,SHA(?))";
+    $query = "INSERT INTO users (email,fname,lname,username,password)VALUES (?,?,?,?,SHA(?))";
     $stmt = $dbh->prepare($query);
     $results = $stmt->execute(array(
         $email,
-        $firstName,
-        $lastName,
+        $firstname,
+        $lastname,
         $username,
         $password1,
     ));
@@ -38,7 +37,7 @@ if (isset($_POST['submit'])) {
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">                                                                                                                                                                                   <style>body{display: none;}</style>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 <head>
     <div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
     <div id="topbanner">
@@ -52,15 +51,16 @@ if (isset($_POST['submit'])) {
         <li><a href="Merchandise.php">Merchandise</a></li>
         <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
+        <li><a href="Signup.php">Signup</a></li>
     </ul>
 </div>
 <div id="signup">
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label>First Name</label>
-    <input type="text" id="First Name" name="fName" value="<?php if (!empty($firstName)) echo ''; ?>">
+    <input type="text" id="First Name" name="fname" value="<?php if (!empty($firstname)) echo ''; ?>">
     <br>
     <label>Last Name</label>
-    <input type="text" id="Last Name" name="lName" value="<?php if (!empty($lastName)) echo ''; ?>">
+    <input type="text" id="Last Name" name="lname" value="<?php if (!empty($lastname)) echo ''; ?>">
     <br>
     <label>Email</label>
     <input type="text" id="Email" name="email" value="<?php if (!empty($email)) echo ''; ?>">

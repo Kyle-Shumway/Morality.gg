@@ -47,6 +47,7 @@ function getProducts($conn) {
         <li><a href="Merchandise.php">Merchandise</a></li>
         <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
+        <li><a href="Signup.php">Signup</a></li>
     </ul>
 </div>
 
