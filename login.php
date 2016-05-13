@@ -65,30 +65,56 @@ if (isset($_POST['submit'])) {
                 font-family: sans-serif;
             }
 
+            img{
+                width:5%;
+                height: 5%;
+
+            }
+
+            #navbar{
+                text-align: center;
+                position: relative;
+                top: 40%;
+                left: 3%;
+                text-decoration: none;
+                list-style-type: none; 
+
+            }
+
+            #navbar li{
+                list-style-type: none; 
+            }
+
+            #Homenav{
+                
+            }
+
 
 
     </style>
 </head>
 <body>
-<div id="logo"><img src="IMGS/Finished-Mongoose.jpg"/></div>
+<div id="logo"><img  src="IMGS/Finished-Mongoose.jpg"/></div>
 <div id="topbanner">
 </div>
-<div id="aboutUl">
+<div id="navbar">
     <ul>
-        <li><a href="index.php">Home</a></li>
+        <li id='Homenav'><a href="index.php">Home</a></li>
         <li><a href="Merchandise.php">Merchandise</a></li>
         <li><a href="ShoppingCart.php">Shopping Cart</a></li>
         <li><a href="login.php">Login</a></li>
     </ul>
-<div id="Login">
+</div>
+<div class='jumbotron form-group' id="Login">
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label>Username</label>
-        <input type="text" id="Username" name="username" value="<?php if (!empty($username)) echo ''; ?>">
+        <b><h2>Login</h2></b><br>
+        <h4>Username</h4>
+        <input class='form-control' style='width:20%;position:relative;left:40%' type="text" id="Username" name="username" value="<?php if (!empty($username)) echo ''; ?>"><br>
         <br>
-        <label>Password</label>
-        <input type="password" id="Password" name="password" value="<?php if (!empty($password1)) echo ''; ?>">
-        <br>
-        <input style="background-color: darkblue;" class="btn btn-info" type="submit" name="submit" value="submit">
+        <h4>Password</h4>
+        <input class='form-control' style='width:20%;position:relative;left:40%;' type="password" id="Password" name="password" value="<?php if (!empty($password1)) echo ''; ?>">
+        <br><br>
+        <input style="background-color: darkblue;width:5%;font-size:20px;" class="btn btn-info" type="submit" name="submit" value="Submit">
     </form>
 </div>
 </body>
