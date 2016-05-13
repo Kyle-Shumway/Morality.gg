@@ -7,6 +7,7 @@ $conn = $dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
 // code
 $query = "SELECT username , s.team_name FROM users u LEFT JOIN subscriptions s ON s.users_id = u.primarykey";
 $stmt = $conn->prepare($query);
+$output = '';
 if ($stmt->execute()) {
     $products = '<tr>';
 
@@ -17,13 +18,15 @@ if ($stmt->execute()) {
                 <td>
                 <p>' . $row['team_name'] . '</p>
                 </td>
-                </tr>
-                ';
+                </tr>';
     }
     echo $output;
 }
-
-
+function generateToken() {
+    $date = date(DATE_RFC2822);
+    $rand = rand();
+    return sha1($date.$rand);
+}
 
 ?>
 <!DOCTYPE html>
@@ -53,9 +56,6 @@ if ($stmt->execute()) {
         </ul>
     </div>
 </div>
-<?php
-getProducts($dbh);
-?>
+
 </body>
 </html>
-
