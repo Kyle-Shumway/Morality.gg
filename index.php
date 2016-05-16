@@ -42,7 +42,7 @@ if ($stmt->execute()) {
             text-decoration: none;
             text-align: center;
             list-style-type: none;
-            background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQtEtRPIQtCw_g4N6OV8CAcF0mqF7J68LCOy5Lc1djh_LGVv-LS') fill fill auto;
+            background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQtEtRPIQtCw_g4N6OV8CAcF0mqF7J68LCOy5Lc1djh_LGVv-LS') fill fill auto no-repeat;
 
         }
 
