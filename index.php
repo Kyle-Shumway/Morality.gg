@@ -1,61 +1,144 @@
-<?php
+<html><head>
+    <title>Morality.gg</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $("span:nth-child(1)").mouseover(function() {                     $("#selector").animate({"left":"5%"},200);
+});
+$("span:nth-child(2)").mouseover(function() {                     $("#selector").animate({"left":"22.1%"},200);
+});
+$("span:nth-child(3)").mouseover(function() {                     $("#selector").animate({"left":"39%"},200);
+});
+$("span:nth-child(4)").mouseover(function() {                     $("#selector").animate({"left":"54.5%"},200);
+});
+$("span:nth-child(5)").mouseover(function() {                     $("#selector").animate({"left":"69%"},200);
+});
+$("span:nth-child(6)").mouseover(function() {                     $("#selector").animate({"left":"83.7%"},200);
+});});</script>
+    <style type="text/css">
+    body
+{
 
-$user = 'root';
-$pass = 'root';
-$name = 'moraldb';
-$conn = $dbh = new PDO('mysql:host=localhost;dbname='.$name, $user, $pass);
-// code
-$query = "SELECT username , s.team_name FROM users u LEFT JOIN subscriptions s ON s.users_id = u.primarykey";
-$stmt = $conn->prepare($query);
-$output = '';
-if ($stmt->execute()) {
-    $products = '<tr>';
-
-    while ($row = $stmt->fetch()) {
-        $output .= '<tr><td>
-                <p>' . $row['username'] . '</p>
-                </td>
-                <td>
-                <p>' . $row['team_name'] . '</p>
-                </td>
-                </tr>';
-    }
-    echo $output;
+    font: sans-serif;
+    text-align: center;
+    color: white;    
+  background-color:#2c3e50;
 }
-function generateToken() {
-    $date = date(DATE_RFC2822);
-    $rand = rand();
-    return sha1($date.$rand);
+#nav_container
+{
+    position: fixed;
+    left: 34%;
+    top: 0%:;
+  width:600px;
+  height:70px;
+  background:#2980b9;
+  margin:0 auto;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0px 3px 0px #1F5A87, 0px 0px 7px black;
+}
+nav span
+{
+  margin-left:40px;
+  font-size:20px;
+  color:white;
+  font-family:sans-serif;
+  position:relative;top:22px;left:-15px;
+  z-index:1;
+  padding:50px 0px 50px 0px;
+  cursor:pointer;
+}
+nav span:active
+{
+  opacity:0.3;
+}
+#selector
+{
+  height:100%;
+  width:80px;
+  background:#8e44ad;
+  position:relative;top:-40%;left:5%;
+  z-index:0;
+}
+#shape
+{
+    border-bottom: 20px solid #5B2B6D;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    height: 10%;
+    width: 100%;
+  -webkit-transform:rotate(180deg);
+  position:relative;top:70px;
+}
+#shape_two
+{
+  width:50px;
+  height:50px;
+  margin:0 auto;
+  position:relative;top:70px;
+  background: rgb(70,33,84); 
+background: -moz-linear-gradient(top,  rgba(70,33,84,1) 0%, rgba(70,33,84,1) 14%, rgba(44,62,80,1) 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,33,84,1)), color-stop(14%,rgba(70,33,84,1)), color-stop(100%,rgba(44,62,80,1))); 
+background: -webkit-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%);  
+background: -o-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); 
+background: -ms-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); 
+background: linear-gradient(to bottom,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', endColorstr='#2c3e50',GradientType=0 ); 
+
+}
+#Welcome
+{
+    width: 40%;
+    height: 30%;
+    position: relative;
+    top: 20%;
+    left: 30%;    
+    background-color:#2980b9;
+      box-shadow:0px 3px 0px #1F5A87, 0px 0px 7px black;
+      border-radius: 10px;
+
+}
+#Welcomemsg
+{
+    position: relative;
+    top: 10%
+}
+#buttonOne
+{
+    background-color: #8e44ad;
+    border-radius: 10px;
+    box-shadow: 0px 3px 0px #1F5A87, 0px 0px 7px black;
+   margin-top: 10%;
 }
 
-?>
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
-<script src="script.js"></script>
-<head>
 
+
+</style>
 </head>
 <body>
-<div id="aboutUl">
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="Merchandise.php">Merchandise</a></li>
-        <li><a href="ShoppingCart.php">Shopping Cart</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="Signup.php">Signup</a></li>
-    </ul>
+<div id="nav_container">
+  <nav>
+    <span>Home</span>
+    <span>Signup</span>
+    <span>Login</span>
+    <span>About</span>
+    <span>Cart</span>
+    <span>Store</span>
+  </nav>
+  <div id="selector" style="left: 5%;">
+    <div id="shape"></div>
+    <div id="shape_two"></div>
+  </div>
 </div>
-<div class=”container”>
-    <div class=”image-slider-wrapper”>
-        <ul id=”image_slider”>
-            <li><img src='IMGS/moralwin.jpeg'></li>
-            <li><img src='IMGS/moralwch.jpeg'></li>
-            <li><img src='IMGS/TSM.jpeg'></li>
-            <li><img src='IMGS/moralleage.jpeg'></li>
-        </ul>
-    </div>
+<div id='Welcome'>
+        <h1 id='Welcomemsg'>Welcome to Morality.gg</h1><br>
+            <h4 id='welcomemsg'>Keep track of all your favorite E-sports teams & events</h4>
+                <button id='buttonOne' style='position:relative;top:20%;' class='btn btn-info'>Join Now!</button>
+
 </div>
 
-</body>
-</html>
+
+
+</body></html>
