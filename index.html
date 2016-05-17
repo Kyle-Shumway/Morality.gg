@@ -5,17 +5,17 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-    $("span:nth-child(1)").mouseover(function() {                     $("#selector").animate({"left":"5%"},200);
+    $("a:nth-child(1)").mouseover(function() {                     $("#selector").animate({"left":"5%"},200);
 });
-$("span:nth-child(2)").mouseover(function() {                     $("#selector").animate({"left":"22.1%"},200);
+$("a:nth-child(2)").mouseover(function() {                     $("#selector").animate({"left":"22.1%"},200);
 });
-$("span:nth-child(3)").mouseover(function() {                     $("#selector").animate({"left":"39%"},200);
+$("a:nth-child(3)").mouseover(function() {                     $("#selector").animate({"left":"39%"},200);
 });
-$("span:nth-child(4)").mouseover(function() {                     $("#selector").animate({"left":"54.5%"},200);
+$("a:nth-child(4)").mouseover(function() {                     $("#selector").animate({"left":"54.5%"},200);
 });
-$("span:nth-child(5)").mouseover(function() {                     $("#selector").animate({"left":"69%"},200);
+$("a:nth-child(5)").mouseover(function() {                     $("#selector").animate({"left":"69%"},200);
 });
-$("span:nth-child(6)").mouseover(function() {                     $("#selector").animate({"left":"83.7%"},200);
+$("a:nth-child(6)").mouseover(function() {                     $("#selector").animate({"left":"83.7%"},200);
 });});</script>
     <style type="text/css">
     body
@@ -112,7 +112,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', end
     box-shadow: 0px 3px 0px #1F5A87, 0px 0px 7px black;
    margin-top: 10%;
 }
+a:hover
+{
+  text-decoration: none;
+  text-decoration-line: none; 
+}
+.container
+{
+  position: relative;
+  top: 30%;
 
+}
 
 
 </style>
@@ -120,12 +130,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', end
 <body>
 <div id="nav_container">
   <nav>
-    <span>Home</span>
-    <span>Signup</span>
-    <span>Login</span>
-    <span>About</span>
-    <span>Cart</span>
-    <span>Store</span>
+    <a href=""><span>Home</span></a>
+    <a href=""><span>Signup</span></a>
+    <a href=""><span>Login</span></a>
+    <a href=""><span>About</span></a>
+    <a href=""><span>Cart</span></a>
+    <a href=""><span>Store</span></a>
   </nav>
   <div id="selector" style="left: 5%;">
     <div id="shape"></div>
@@ -138,7 +148,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', end
                 <button id='buttonOne' style='position:relative;top:20%;' class='btn btn-info'>Join Now!</button>
 
 </div>
-
-
-
-</body></html>
+</body>
+</html>
