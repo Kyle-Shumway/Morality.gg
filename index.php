@@ -1,9 +1,70 @@
-<html><head>
+<html ng-app="mwl.calendar.docs">
+<head>
     <title>Morality.gg</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.4/interact.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+    <script src="//mattlewis92.github.io/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//mattlewis92.github.io/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
     <script type="text/javascript">
+    angular.module('mwl.calendar.docs', ['mwl.calendar', 'ngAnimate', 'ui.bootstrap']);
+angular
+  .module('mwl.calendar.docs')
+  .controller('DraggableEventsCtrl', function(moment, alert) {
+
+    var vm = this;
+
+    vm.events = [
+      {
+        title: 'Draggable event',
+        type: 'warning',
+        startsAt: moment().startOf('month').toDate(),
+        draggable: true
+      },
+      {
+        title: 'Non-draggable event',
+        type: 'info',
+        startsAt: moment().startOf('month').toDate(),
+        draggable: false
+      }
+    ];
+
+    vm.calendarView = 'month';
+    vm.viewDate = moment().startOf('month').toDate();
+    vm.isCellOpen = true;
+
+    vm.eventTimesChanged = function(event) {
+      alert.show('Dragged and dropped', event);
+    };
+
+  });
+    angular
+  .module('mwl.calendar.docs')
+  .factory('alert', function($uibModal) {
+
+    function show(action, event) {
+      return $uibModal.open({
+        templateUrl: 'modalContent.html',
+        controller: function() {
+          var vm = this;
+          vm.action = action;
+          vm.event = event;
+        },
+        controllerAs: 'vm'
+      });
+    }
+
+    return {
+      show: show
+    };
+
+  });
     $(document).ready(function(){
     $("a:nth-child(1)").mouseover(function() {                     $("#selector").animate({"left":"5%"},200);
 });
@@ -21,13 +82,14 @@ $("a:nth-child(6)").mouseover(function() {                     $("#selector").an
     body
 {
 
-    font: sans-serif;
+    font: monospace;
     text-align: center;
     color: white;    
   background-color:#2c3e50;
 }
 #nav_container
 {
+    z-index: 100;
     position: fixed;
     left: 34%;
     top: 0%:;
@@ -91,7 +153,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', end
 #Welcome
 {
     width: 40%;
-    height: 30%;
+    height: 20%;
     position: relative;
     top: 20%;
     left: 30%;    
@@ -110,7 +172,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', end
     background-color: #8e44ad;
     border-radius: 10px;
     box-shadow: 0px 3px 0px #1F5A87, 0px 0px 7px black;
-   margin-top: 10%;
+   margin-top: 5%;
 }
 a:hover
 {
@@ -123,7 +185,21 @@ a:hover
   top: 30%;
 
 }
+#calendar
+{
+  background-color: #2980b9;
+  position: relative;
+  top: 21%;
+  left: 30%;
+  color: black;
+  width: 40%;
 
+}
+.cal-day-hour-part
+{
+  background-color: #8e44ad;
+
+}
 
 </style>
 </head>
@@ -148,5 +224,17 @@ a:hover
                 <button id='buttonOne' style='position:relative;top:20%;' class='btn btn-info'>Join Now!</button>
 
 </div>
+<div id='calendar'>
+<div ng-controller="DraggableEventsCtrl as vm">
+  <ng-include src="'calendarControls.html'"></ng-include>
+  <mwl-calendar
+    events="vm.events"
+    view="vm.calendarView"
+    view-date="vm.viewDate"
+    cell-is-open="vm.isCellOpen"
+    on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd">
+  </mwl-calendar>
+</div>
+      </div>
 </body>
 </html>
